@@ -22,17 +22,13 @@ x_train = scaler.fit_transform(x_train)
 x_test = scaler.transform(x_test)
 
 parameters = {
-
+    "n_estimators": [50, 100, 150, 200],
+    "criterion": ['gini', 'entropy', 'log_loss'],
+    "max_depth": [None, 1, 5, 10],
+    "max_features": ['auto', 'sqrt', 'log2']
 }
 
-# cls = RandomForestClassifier()
-# cls.fit(x_train, y_train)
-#
-# y_predict = cls.predict(x_test)
-# # print(classification_report(y_test, y_predict))
-# print(confusion_matrix(y_test, y_predict))
-#
-# cm = np.array(confusion_matrix(y_test, y_predict, labels=[0,1]))
-# confusion_matrix = pd.DataFrame(cm, index=["Diabetic", "Not Diabetic"], columns=["Predicted Diabetic", "Predicted Not Diabetic"])
-# sns.heatmap(confusion_matrix, annot=True, fmt='g')
-# plt.show()
+cls = GridSearchCV(RandomForestClassifier(), parameters, cv=5, n_jobs=-1, verbose=1, scoring='accuracy')
+cls.fit(x_train, y_train)
+y_predict = cls.predict(x_test)
+print(classification_report(y_test, y_predict))
