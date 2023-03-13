@@ -44,6 +44,7 @@ x_test = scaler.transform(x_test)
 #
 # cls = GridSearchCV(RandomForestClassifier(), params, cv=5, n_jobs=-1, verbose=1)
 
+# create model based on best params from GridSearchCV
 cls = RandomForestClassifier(criterion='entropy', max_depth=10, max_features='sqrt', n_estimators=100)
 cls.fit(x_train, y_train)
 y_predict = cls.predict(x_test)
