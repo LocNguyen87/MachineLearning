@@ -80,10 +80,10 @@ y_predict_rf = rf.predict(x_test)
 # print the results
 print(lr.best_params_)
 print(rf.best_params_)
-# print('LogisticRegression result:')
-# print(classification_report(y_test, y_predict_lr))
-# print('RandomForestClassifier result:')
-# print(classification_report(y_test, y_predict_rf))
+print('LogisticRegression result:')
+print(classification_report(y_test, y_predict_lr))
+print('RandomForestClassifier result:')
+print(classification_report(y_test, y_predict_rf))
 # print(confusion_matrix(y_test, y_predict))
 
 # plot the confusion matrix
