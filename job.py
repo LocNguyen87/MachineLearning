@@ -11,4 +11,5 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_
 
 vectorizer = TfidfVectorizer(stop_words='english', ngram_range=(1,1))
 result = vectorizer.fit_transform(data["title"])
-print(result.shape)
+print(vectorizer.vocabulary_)
+print(result[0])
